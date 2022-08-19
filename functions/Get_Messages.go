@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"fmt"
@@ -10,8 +10,6 @@ import (
 	"bitbucket.org/taubyte/go-sdk/event"
 	"github.com/valyala/fastjson"
 )
-
-func main() {}
 
 //export getMessages
 func getMessages(e event.Event) uint32 {
@@ -63,7 +61,7 @@ func _getMessages(h event.HttpEvent) error {
 
 	// Sort msg timestamps increasingly
 	times := make([]int64, 0)
-	for idx, key := range keys {
+	for _, key := range keys {
 		_trim := key[strings.LastIndex(key, "/")+1:]
 		time, err := strconv.ParseInt(_trim, 10, 64)
 		if err != nil {

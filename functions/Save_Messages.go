@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"fmt"
@@ -7,8 +7,6 @@ import (
 	"bitbucket.org/taubyte/go-sdk/event"
 	"github.com/valyala/fastjson"
 )
-
-func main() {}
 
 //export saveMessage
 func saveMessage(e event.Event) uint32 {
@@ -50,7 +48,7 @@ func saveMessage(e event.Event) uint32 {
 	} else {
 		entry = fmt.Sprintf("msg/%s/%s", secret, timestamp)
 	}
-    
+
 	v, err := fastjson.Parse(data)
 	if err != nil {
 		return 1
