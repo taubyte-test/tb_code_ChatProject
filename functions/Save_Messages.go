@@ -64,7 +64,7 @@ func saveMessage(e event.Event) uint32 {
 		return 1
 	}
 
-	err = h.Write([]byte(jsonObject.String()))
+	_, err = h.Write([]byte(jsonObject.String()))
 	if err != nil {
 		return 1
 	}
