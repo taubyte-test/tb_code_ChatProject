@@ -52,7 +52,7 @@ func _getMessages(h event.HttpEvent) error {
 	}
 
 	if len(keys) == 0 {
-		err = h.Write([]byte("Currently No Messages Stored"))
+		_, err = h.Write([]byte("Currently No Messages Stored"))
 		if err != nil {
 			return err
 		}
@@ -116,7 +116,7 @@ func _getMessages(h event.HttpEvent) error {
 		return err
 	}
 
-	err = h.Write([]byte(jsonObject))
+	_, err = h.Write([]byte(jsonObject))
 	if err != nil {
 		return err
 	}
