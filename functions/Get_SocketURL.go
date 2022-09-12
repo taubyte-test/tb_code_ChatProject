@@ -34,7 +34,7 @@ func _getsocketurl(h event.HttpEvent) error {
 		return err
 	}
 
-	err = h.Write([]byte(url.Path))
+	_, err = h.Write([]byte(url.Path))
 	if err != nil {
 		return err
 	}
