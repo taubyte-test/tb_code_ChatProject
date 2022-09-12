@@ -1,6 +1,8 @@
 package lib
 
 import (
+	"fmt"
+
 	"bitbucket.org/taubyte/go-sdk/event"
 	"bitbucket.org/taubyte/go-sdk/pubsub"
 )
@@ -29,16 +31,16 @@ func _getsocketurl(h event.HttpEvent) error {
 	if err != nil {
 		return err
 	}
-fmt.Println("GETSOCKET2")
+	fmt.Println("GETSOCKET2")
 	url, err := channel.WebSocket().Url()
 	if err != nil {
 		return err
 	}
-fmt.Println("GETSOCKET3")
+	fmt.Println("GETSOCKET3")
 	_, err = h.Write([]byte(url.Path))
 	if err != nil {
 		return err
 	}
-fmt.Println("GETSOCKET4")
+	fmt.Println("GETSOCKET4")
 	return nil
 }
