@@ -1,9 +1,8 @@
 package lib
 
 import (
-	"fmt"
-
 	"bitbucket.org/taubyte/go-sdk/event"
+	"bitbucket.org/taubyte/go-sdk/globals/u32"
 	"bitbucket.org/taubyte/go-sdk/pubsub"
 )
 
@@ -26,21 +25,25 @@ func getsocketurl(e event.Event) uint32 {
 }
 
 func _getsocketurl(h event.HttpEvent) error {
-	fmt.Println("GETSOCKET1")
 	channel, err := pubsub.Channel("chatChannel")
 	if err != nil {
 		return err
 	}
-	fmt.Println("GETSOCKET2")
+
 	url, err := channel.WebSocket().Url()
 	if err != nil {
 		return err
 	}
-	fmt.Println("GETSOCKET3")
+
+	u, err := u32.GetOrCreate("chatUsers")
+	if err == nil {
+		u.Set(u.Value() + 1)
+	}
+
 	_, err = h.Write([]byte(url.Path))
 	if err != nil {
 		return err
 	}
-	fmt.Println("GETSOCKET4")
+
 	return nil
 }
