@@ -37,7 +37,6 @@ func _getsocketurl(h event.HttpEvent) error {
 
 	u, err := u32.GetOrCreate("chatUsers")
 	if err == nil {
-
 		u.Set(u.Value() + 1)
 	}
 
