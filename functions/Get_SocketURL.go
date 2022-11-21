@@ -3,7 +3,7 @@ package lib
 import (
 	"bitbucket.org/taubyte/go-sdk/event"
 	"bitbucket.org/taubyte/go-sdk/globals/u32"
-	// "bitbucket.org/taubyte/go-sdk/pubsub"
+	"bitbucket.org/taubyte/go-sdk/pubsub"
 )
 
 //export getsocketurl
